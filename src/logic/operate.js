@@ -1,0 +1,27 @@
+import Big from 'big.js';
+
+export default function operate(numberOne, numberTwo, operation) {
+  try {
+    const one = Big(numberOne);
+    const two = Big(numberTwo);
+    if (operation === '+') {
+      return one.plus(two).toString();
+    }
+    if (operation === '-') {
+      return one.minus(two).toString();
+    }
+    if (operation === 'x') {
+      return one.times(two).toString();
+    }
+    if (operation === '÷') {
+      return one.div(two).toString();
+    }
+    if (operation === '%') {
+      return one.mod(two).toString();
+    }
+    throw Error(`Unknown operation '${operation}'`);
+  } catch (err) {
+    return err.message.replace('[big.js] ', '');
+  }
+  
+}
