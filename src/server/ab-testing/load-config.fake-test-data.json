@@ -1,0 +1,11 @@
+[
+  {
+    "name": "enabled",
+    "enabled": true
+  },
+
+  {
+    "name": "disabled",
+    "enabled": false
+  }
+]

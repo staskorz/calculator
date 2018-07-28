@@ -13,3 +13,6 @@ build
 .DS_Store
 .idea
 npm-debug.log
+
+# config for A/B Testing experiments
+ab-testing-experiments.json
