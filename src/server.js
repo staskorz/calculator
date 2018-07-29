@@ -3,14 +3,14 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const path = require('path');
 
-const ensureTrackingCookieMiddleware = require('./server/ab-testing/cookie/ensure-tracking-cookie-express-middleware');
+const trackingCookieMiddleware = require('./server/express-middleware/tracking-cookie');
 
 app.use(cookieParser());
 
 app.use(express.static('static'));
 
 // main route
-app.use('*', ensureTrackingCookieMiddleware);
+app.use('*', trackingCookieMiddleware);
 
 app.get('*', (req, res) => {
   console.log('got request');

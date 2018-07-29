@@ -1,4 +1,4 @@
-const ensureTrackingCookieExpressMiddleware = require('./ensure-tracking-cookie-express-middleware');
+const ensureTrackingCookieExpressMiddleware = require('./index');
 const { TRACKING_COOKIE_NAME } = require('../../../constants');
 
 describe('ensure-tracking-cookie-express-middleware.js', () => {
