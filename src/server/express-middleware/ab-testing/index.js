@@ -21,9 +21,6 @@ module.exports = experiments => (req, res, next) => {
     if (experiment.conditions) {
       const { country } = experiment.conditions;
 
-      console.log(req.query);
-      console.log(req.path);
-
       if (country && req.query.country === country) {
         if (numberDerivedFromToken < experiment.percentage) {
           res.cookie(AB_TESTING_COOKIE_NAME, experiment.name, {
