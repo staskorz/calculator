@@ -1,0 +1,16 @@
+[
+  {
+    "name": "ALTERNATIVE_COLOR_FOR_EQUALS_SIGN",
+    "enabled": true,
+    "percentage": 50,
+    "conditions": {
+      "country": "US"
+    }
+  },
+
+  {
+    "name": "SWITCH_BETWEEN_PLUS_MINUS_AND_PERCENTAGE_SIGNS",
+    "enabled": false,
+    "percentage": 40
+  }
+]
