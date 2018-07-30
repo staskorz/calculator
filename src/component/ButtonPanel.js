@@ -1,4 +1,5 @@
 import Button from './Button';
+import abTestingExperimentName from '../ab-testing/experiment-name';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,12 +11,30 @@ class ButtonPanel extends React.Component {
   }
 
   render() {
+    let equalsSignColorProp = {};
+    let plusMinusAndPercentButtons;
+
+    const plusMinusButton = <Button name="+/-" clickHandler={this.handleClick} />;
+    const percentButton = <Button name="%" clickHandler={this.handleClick} />;
+
+    if (abTestingExperimentName === "ALTERNATIVE_COLOR_FOR_EQUALS_SIGN") {
+      equalsSignColorProp.green = true;
+    } else {
+      equalsSignColorProp.orange = true;
+    }
+
+    if (abTestingExperimentName === "SWITCH_BETWEEN_PLUS_MINUS_AND_PERCENTAGE_SIGNS") {
+      plusMinusAndPercentButtons = [percentButton, plusMinusButton];
+    } else {
+      plusMinusAndPercentButtons = [plusMinusButton, percentButton];
+    }
+
     return (
       <div className="component-button-panel">
         <div>
           <Button name="AC" clickHandler={this.handleClick} />
-          <Button name="+/-" clickHandler={this.handleClick} />
-          <Button name="%" clickHandler={this.handleClick} />
+          {plusMinusAndPercentButtons[0]}
+          {plusMinusAndPercentButtons[1]}
           <Button name="÷" clickHandler={this.handleClick} orange />
         </div>
         <div>
@@ -39,7 +58,7 @@ class ButtonPanel extends React.Component {
         <div>
           <Button name="0" clickHandler={this.handleClick} wide />
           <Button name="." clickHandler={this.handleClick} />
-          <Button name="=" clickHandler={this.handleClick} orange />
+          <Button name="=" clickHandler={this.handleClick} {...equalsSignColorProp} />
         </div>
       </div>
     );

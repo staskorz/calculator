@@ -26,6 +26,11 @@
   color: white;
 }
 
+.component-button.green button {
+  background-color: #1cbb31;
+  color: white;
+}
+
 @media (min-width: 200px) and (min-height: 200px) {
   .component-button button {
     font-size: 25px;
