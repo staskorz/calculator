@@ -1,4 +1,5 @@
 import Button from './Button';
+import abTestingExperimentName from '../ab-testing/experiment-name'
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,6 +11,14 @@ class ButtonPanel extends React.Component {
   }
 
   render() {
+    let equalsSignColorProp = {}
+
+    if (abTestingExperimentName === "ALTERNATIVE_COLOR_FOR_EQUALS_SIGN") {
+      equalsSignColorProp.green = true;
+    } else {
+      equalsSignColorProp.orange = true;
+    }
+
     return (
       <div className="component-button-panel">
         <div>
@@ -39,7 +48,7 @@ class ButtonPanel extends React.Component {
         <div>
           <Button name="0" clickHandler={this.handleClick} wide />
           <Button name="." clickHandler={this.handleClick} />
-          <Button name="=" clickHandler={this.handleClick} orange />
+          <Button name="=" clickHandler={this.handleClick} {...equalsSignColorProp} />
         </div>
       </div>
     );

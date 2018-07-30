@@ -12,6 +12,7 @@ class Button extends React.Component {
     const className = [
       "component-button",
       this.props.orange ? "orange" : "",
+      this.props.green ? "green" : "",
       this.props.wide ? "wide" : "",
     ];
 
