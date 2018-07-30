@@ -13,7 +13,7 @@ module.exports = experiments => (req, res, next) => {
 
   const numberOfExperiments = experiments.length;
 
-  let isCandidate = false;
+  let isParticipant = false;
 
   for (let i = 0; i < numberOfExperiments; i++) {
     const experiment = experiments[i];
@@ -26,10 +26,9 @@ module.exports = experiments => (req, res, next) => {
           res.cookie(AB_TESTING_COOKIE_NAME, experiment.name, {
             expires: DISTANT_FUTURE_DATE
           });
+
+          isParticipant = true;
         }
-
-        isCandidate = true;
-
         break;
       }
     } else {
@@ -37,15 +36,14 @@ module.exports = experiments => (req, res, next) => {
         res.cookie(AB_TESTING_COOKIE_NAME, experiment.name, {
           expires: DISTANT_FUTURE_DATE
         });
+
+        isParticipant = true;
       }
-
-      isCandidate = true;
-
       break;
     }
   }
 
-  if (!isCandidate) {
+  if (!isParticipant) {
     res.clearCookie(AB_TESTING_COOKIE_NAME);
   }
 
