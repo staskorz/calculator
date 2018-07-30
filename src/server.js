@@ -6,9 +6,7 @@ const path = require('path');
 const trackingCookieMiddleware = require('./server/express-middleware/tracking-cookie');
 const abTestingMiddleware = require('./server/express-middleware/ab-testing');
 
-const abTestingExperiments = require('../ab-testing-experiments.json').filter(
-  ({ enabled }) => enabled
-);
+const abTestingExperiments = require('./server/ab-testing/enabled-experiments');
 
 app.use(cookieParser());
 
