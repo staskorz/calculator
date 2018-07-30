@@ -4,7 +4,7 @@ const {
   AB_TESTING_COOKIE_NAME
 } = require('../../../constants');
 
-const tokenToNumber = require('../../ab-testing/cookie/token-to-number');
+const tokenToNumber = require('./token-to-number');
 
 module.exports = experiments => (req, res, next) => {
   const trackingToken = req.cookies[TRACKING_COOKIE_NAME];
