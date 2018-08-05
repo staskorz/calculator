@@ -1,11 +1,11 @@
 const {
   DISTANT_FUTURE_DATE,
-  PERCENTAGE_COOKIE_NAME,
+  AB_TESTING_PERCENTAGE_COOKIE_NAME,
   AB_TESTING_COOKIE_NAME
 } = require('../../../constants');
 
 module.exports = experiments => (req, res, next) => {
-  const percentage = req.cookies[PERCENTAGE_COOKIE_NAME];
+  const percentage = req.cookies[AB_TESTING_PERCENTAGE_COOKIE_NAME];
 
   const numberOfExperiments = experiments.length;
 

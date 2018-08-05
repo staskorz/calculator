@@ -3,7 +3,7 @@ const generatePercentage = require('./generate-percentage');
 const ensureCookie = require('./ensure-cookie');
 const {
   TRACKING_COOKIE_NAME,
-  PERCENTAGE_COOKIE_NAME
+  AB_TESTING_PERCENTAGE_COOKIE_NAME
 } = require('../../../constants');
 
 module.exports = (req, res, next) => {
@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
       generateValue: generateToken
     },
     {
-      name: PERCENTAGE_COOKIE_NAME,
+      name: AB_TESTING_PERCENTAGE_COOKIE_NAME,
       generateValue: generatePercentage
     }
   ].forEach(({ name, generateValue }) => {
