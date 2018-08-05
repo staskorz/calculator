@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const path = require('path');
 
-const trackingCookieMiddleware = require('./server/express-middleware/tracking-cookie');
+const trackingCookieMiddleware = require('./server/express-middleware/ensure-cookies');
 const abTestingMiddleware = require('./server/express-middleware/ab-testing');
 
 app.use(cookieParser());
