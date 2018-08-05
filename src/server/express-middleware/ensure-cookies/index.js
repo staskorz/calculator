@@ -1,20 +1,29 @@
 const generateToken = require('./generate-token');
+const generatePercentage = require('./generate-percentage');
+const ensureCookie = require('./ensure-cookie');
 const {
   TRACKING_COOKIE_NAME,
-  DISTANT_FUTURE_DATE
+  PERCENTAGE_COOKIE_NAME
 } = require('../../../constants');
 
 module.exports = (req, res, next) => {
-  if (!req.cookies[TRACKING_COOKIE_NAME]) {
-    const token = generateToken();
-
-    res.cookie(TRACKING_COOKIE_NAME, token, {
-      expires: DISTANT_FUTURE_DATE,
-      httpOnly: true
+  [
+    {
+      name: TRACKING_COOKIE_NAME,
+      generateValue: generateToken
+    },
+    {
+      name: PERCENTAGE_COOKIE_NAME,
+      generateValue: generatePercentage
+    }
+  ].forEach(({ name, generateValue }) => {
+    ensureCookie({
+      name,
+      generateValue,
+      cookies: req.cookies,
+      setCookie: res.cookie.bind(res)
     });
-
-    req.cookies[TRACKING_COOKIE_NAME] = token; // make token cookie available in the same session it was generated in
-  }
+  });
 
   next();
 };
