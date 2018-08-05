@@ -1,7 +1,7 @@
-const ensureTrackingCookieExpressMiddleware = require('./index');
+const ensureCookiesMiddleware = require('./index');
 const { TRACKING_COOKIE_NAME } = require('../../../constants');
 
-describe('ensure-tracking-cookie-express-middleware.js', () => {
+describe('index.js', () => {
   it('generates tracking cookie if one does not exist', done => {
     const req = {
       cookies: {}
@@ -20,7 +20,7 @@ describe('ensure-tracking-cookie-express-middleware.js', () => {
       done();
     };
 
-    ensureTrackingCookieExpressMiddleware(req, res, next);
+    ensureCookiesMiddleware(req, res, next);
   });
 
   it('keeps tracking cookie if one exists', done => {
@@ -43,6 +43,6 @@ describe('ensure-tracking-cookie-express-middleware.js', () => {
       done();
     };
 
-    ensureTrackingCookieExpressMiddleware(req, res, next);
+    ensureCookiesMiddleware(req, res, next);
   });
 });
